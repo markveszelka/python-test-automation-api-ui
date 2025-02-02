@@ -1,4 +1,4 @@
-from helpers.api_helper import get_account
+from src.lib.helpers.api_helper import get_account
 
 
 def test_create_account(new_account):

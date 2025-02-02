@@ -1,4 +1,4 @@
-from helpers.api_helper import *
+from src.lib.helpers.api_helper import *
 
 
 def test_deposit_money(new_account):
