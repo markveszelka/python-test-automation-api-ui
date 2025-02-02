@@ -1,6 +1,6 @@
 from behave import *
 from src.lib.drivers.chrome_driver_provider import ChromeDriver
-# from src.lib.helpers.allure_screen_shot_helper import ScreenshotHelper
+from src.lib.helpers.allure_screen_shot_helper import ScreenshotHelper
 from src.pageObjects.pages.base_page import BasePage
 from src.pageObjects.pages.home_page import HomePage
 from src.pageObjects.pages.product_details_page import ProductDetailsPage
@@ -27,9 +27,9 @@ def before_scenario(context, scenario):
     context.product_page = ProductPage(context.driver)
     context.product_details_page = ProductDetailsPage(context.driver)
 
-# def after_scenario(context, scenario):
-#     if scenario.status == "failed":
-#         ScreenshotHelper.take_screenshot(context.driver, scenario.name)
-#
-#     if context.driver:
-#         context.driver.quit()
+def after_scenario(context, scenario):
+    if scenario.status == "failed":
+        ScreenshotHelper.take_screenshot(context.driver, scenario.name)
+
+    if context.driver:
+        context.driver.quit()
