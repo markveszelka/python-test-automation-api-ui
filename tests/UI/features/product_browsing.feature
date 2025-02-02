@@ -16,14 +16,14 @@ Feature: Product Browsing
     Examples:
       | product_category                 |
       | Mission Payloads                 |
-#      | Power Systems                    |
-#      | Communication Systems            |
-#      | Command & Data handling          |
-#      | Attitude & Orbit Control Systems |
-#      | Products for Ground Systems      |
-#      | Structures                       |
+      | Power Systems                    |
+      | Communication Systems            |
+      | Command & Data handling          |
+      | Attitude & Orbit Control Systems |
+      | Products for Ground Systems      |
+      | Structures                       |
 
-  @level_e2e @priority_high @runthis
+  @level_e2e @priority_high
   Scenario: Browse Products by Category
     And   I navigate to the "Mission Payloads" category within Products
     And   I am on the "Mission Payloads" product listing page
