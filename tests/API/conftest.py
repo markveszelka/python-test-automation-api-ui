@@ -1,5 +1,5 @@
 import pytest
-from helpers.api_helper import create_account
+from src.lib.helpers.api_helper import create_account
 
 
 @pytest.fixture
