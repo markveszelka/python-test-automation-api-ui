@@ -1,9 +1,7 @@
-import os
 import requests
-from dotenv import load_dotenv
+from global_scope import API_BASE_URL
 
-load_dotenv()
-BASE_URL = os.getenv("API_BASE_URL")
+BASE_URL = API_BASE_URL
 
 
 def create_account(currency):

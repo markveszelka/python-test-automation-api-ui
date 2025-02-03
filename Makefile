@@ -10,7 +10,7 @@ DOKCER_ALLURE_RESULTS_DIR = $(shell pwd)/docker-allure-results
 DOCKER_ALLURE_REPORT_DIR = $(shell pwd)/docker-allure-report
 
 
-### LOCAL PYTHON RUN: ##########################################
+### LOCAL PYTHON UI TESTS RUN: ##########################################
 run-level-e2e-tests:
 	@echo "Starting to run the tests locally..."
 	source .venv/bin/activate && behave --tags=level_e2e --no-skipped \
@@ -31,7 +31,7 @@ clean-local-reports:
 run-local-all: clean-local-reports run-level-e2e-tests generate-allure-report open-local-allure-report
 
 
-### LOCAL DOCKER RUN: ##########################################
+### LOCAL DOCKER UI TESTS RUN: ##########################################
 build:
 	@echo "Building the Docker image..."
 	docker buildx build --platform linux/amd64 -t $(DOCKER_IMAGE) --load --no-cache .
@@ -54,3 +54,12 @@ open-docker-allure-report:
 # Before run:
 # Make sure that you have Docker installed and in 'environment.py' set 'headless=True' in browser_chrome method.
 run-docker-all: clean-docker-reports build run-tests-and-generate-allure-report open-docker-allure-report
+
+# Before run:
+# Make sure that the Fund Transfer API is running
+### LOCAL API TESTS RUN: ##########################################
+run-api-tests:
+	@echo "Run all API tests..."
+	source .venv/bin/activate && pytest -m "api_account or api_transaction" \
+	|| echo "Tests failed"
+

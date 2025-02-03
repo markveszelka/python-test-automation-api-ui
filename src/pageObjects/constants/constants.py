@@ -6,10 +6,3 @@ class URLs:
 
 class Texts:
     PRODUCTS_PAGE_TEXT = "Products"
-
-
-class Messages:
-    INVALID_CREDENTIALS_ERROR_MESSAGE = (
-        "The account sign-in was incorrect or your account is disabled temporarily. "
-        "Please wait and try again later."
-    )

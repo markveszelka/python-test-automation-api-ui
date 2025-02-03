@@ -14,4 +14,3 @@ packaging==24.2
 pluggy==1.5.0
 requests==2.32.3
 urllib3==2.3.0
-python-dotenv~=1.0.1
