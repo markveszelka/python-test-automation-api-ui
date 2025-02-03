@@ -1,6 +1,9 @@
+import pytest
+
 from src.lib.helpers.api_helper import get_account
 
 
+@pytest.mark.api_account
 def test_create_account(new_account):
     currency = "EUR"
     response = new_account(currency)
@@ -9,6 +12,7 @@ def test_create_account(new_account):
     assert response.json()["currency"] == currency
 
 
+@pytest.mark.api_account
 def test_get_account(new_account):
     account = new_account("EUR")
     account_id = account.json()["id"]
@@ -18,6 +22,7 @@ def test_get_account(new_account):
     assert response.json()["id"] == f"{account_id}"
 
 
+@pytest.mark.api_account
 def test_get_nonexistent_account():
     non_existent_account_id = 9999
     response = get_account(non_existent_account_id)

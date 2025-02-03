@@ -1,6 +1,9 @@
+import pytest
+
 from src.lib.helpers.api_helper import *
 
 
+@pytest.mark.api_transaction
 def test_deposit_money(new_account):
     # ARRANGE: Create an account
     account = new_account()
@@ -15,6 +18,7 @@ def test_deposit_money(new_account):
     assert response.json()["balance"] == initial_balance + added_amount
 
 
+@pytest.mark.api_transaction
 def test_withdraw_success(new_account):
     # ARRANGE
     account = new_account()
@@ -32,6 +36,7 @@ def test_withdraw_success(new_account):
     assert response.json()["balance"] == initial_balance + deposit_amount - withdraw_amount
 
 
+@pytest.mark.api_transaction
 def test_withdraw_insufficient_balance(new_account):
     # ARRANGE
     account = new_account()
@@ -47,6 +52,7 @@ def test_withdraw_insufficient_balance(new_account):
     assert expected_message in response.json()["message"]
 
 
+@pytest.mark.api_transaction
 def test_transfer_success(new_account):
     # ARRANGE
     account_1 = new_account()
@@ -70,6 +76,7 @@ def test_transfer_success(new_account):
     assert account_2_response.json()["balance"] == transfer_amount
 
 
+@pytest.mark.api_transaction
 def test_transfer_insufficient_funds(new_account):
     # ARRANGE
     account_1 = new_account()
@@ -87,6 +94,7 @@ def test_transfer_insufficient_funds(new_account):
     assert "insufficient balance" in response.json()["message"]
 
 
+@pytest.mark.api_transaction
 def test_transfer_nonexistent_account(new_account):
     # ARRANGE
     account_1 = new_account()
